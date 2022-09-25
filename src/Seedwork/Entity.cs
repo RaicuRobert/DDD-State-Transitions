@@ -2,6 +2,7 @@
 {
     public abstract class Entity: IEntity
     {
+        int? _requestedHashCode;
         int _Id;
         public virtual int Id
         {
@@ -13,6 +14,11 @@
             {
                 _Id = value;
             }
+        }
+
+        public bool IsTransient()
+        {
+            return this.Id == default(Int32);
         }
 
         public override bool Equals(object? obj)
@@ -28,12 +34,23 @@
 
             Entity item = (Entity)obj;
 
-            return item.Id == this.Id;
+            if (item.IsTransient() || this.IsTransient())
+                return false;
+            else
+                return item.Id == this.Id;
         }
 
         public override int GetHashCode()
         {
-           return base.GetHashCode();
+            if (!IsTransient())
+            {
+                if (!_requestedHashCode.HasValue)
+                    _requestedHashCode = this.Id.GetHashCode() ^ 31; // XOR for random distribution (http://blogs.msdn.com/b/ericlippert/archive/2011/02/28/guidelines-and-rules-for-gethashcode.aspx)
+
+                return _requestedHashCode.Value;
+            }
+            else
+                return base.GetHashCode();
         }
         public static bool operator ==(Entity left, Entity right)
         {
