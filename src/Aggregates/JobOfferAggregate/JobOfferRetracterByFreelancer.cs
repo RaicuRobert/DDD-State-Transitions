@@ -6,7 +6,7 @@ namespace StateTransitions.Aggregates.JobOfferAggregate
     public class JobOfferRetracterByFreelancer : JobOfferData
     {
         public JobOfferRetracterByFreelancer(IJobOfferRetractableByFreelancer jobOffer)
-            : base(JobOfferStatus.PendingCompletion, jobOffer.Job, jobOffer.Freelancer, jobOffer.Id)
+            : base(jobOffer)
         { }
     }
 }

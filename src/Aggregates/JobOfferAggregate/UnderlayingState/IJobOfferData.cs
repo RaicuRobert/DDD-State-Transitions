@@ -8,6 +8,5 @@ namespace StateTransitions.Aggregates.JobOfferAggregate.UnderlayingState
     {
         public JobPost Job { get; }
         public Freelancer Freelancer { get; }
-        public JobOfferStatus JobOfferStatus { get; }
     }
 }

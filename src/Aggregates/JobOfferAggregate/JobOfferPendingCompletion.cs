@@ -7,8 +7,8 @@ namespace StateTransitions.Aggregates.JobOfferAggregate
 {
     public class JobOfferPendingCompletion : JobOfferData, IJobOfferRetractableByFreelancer, IJobOfferRetractableByPoster, IJobOfferFailable
     {
-        public JobOfferPendingCompletion(JobOfferOngoing jobOffer) 
-            : base(JobOfferStatus.PendingCompletion, jobOffer.Job, jobOffer.Freelancer, jobOffer.Id)
+        public JobOfferPendingCompletion(JobOfferOngoing jobOffer)
+            : base(jobOffer)
         { }
 
         public JobOfferOngoing DenyCompletion(JobPoster poster)

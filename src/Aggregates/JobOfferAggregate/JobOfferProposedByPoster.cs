@@ -9,7 +9,7 @@ namespace StateTransitions.Aggregates.JobOfferAggregate
     public sealed class JobOfferProposedByPoster : JobOfferData, IJobOfferRetractableByPoster
     {
         public JobOfferProposedByPoster(JobPost job, Freelancer freelancer)
-            : base(JobOfferStatus.ProposedByPoster, job, freelancer)
+            : base(jobOffer)
         { }
 
         public JobOfferOngoing Accept(Freelancer freelancer)

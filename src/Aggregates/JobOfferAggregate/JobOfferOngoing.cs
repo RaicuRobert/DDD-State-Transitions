@@ -7,16 +7,16 @@ namespace StateTransitions.Aggregates.JobOfferAggregate
 {
     public class JobOfferOngoing : JobOfferData, IJobOfferRetractableByFreelancer, IJobOfferRetractableByPoster, IJobOfferFailable
     {
-        public JobOfferOngoing(JobOfferProposedByFreelancer jobOffer) 
-            : base(JobOfferStatus.Ongoing, jobOffer.Job, jobOffer.Freelancer, jobOffer.Id)
+        public JobOfferOngoing(JobOfferProposedByFreelancer jobOffer)
+            : base(jobOffer)
         { }
 
         public JobOfferOngoing(JobOfferProposedByPoster jobOffer)
-            : base(JobOfferStatus.Ongoing, jobOffer.Job, jobOffer.Freelancer, jobOffer.Id)
+            : base(jobOffer)
         { }
 
         public JobOfferOngoing(JobOfferPendingCompletion jobOffer)
-            : base(JobOfferStatus.Ongoing, jobOffer.Job, jobOffer.Freelancer, jobOffer.Id)
+            : base(jobOffer)
         { }
 
         public JobOfferPendingCompletion MarkAsPendingCompletion(Freelancer freelancer) {
